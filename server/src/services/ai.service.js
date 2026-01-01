@@ -1,20 +1,24 @@
-const OpenAI = require("openai");
+let client = null;
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+if (process.env.ENABLE_AI === "true") {
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error("OPENAI_API_KEY is required when ENABLE_AI=true");
+  }
+
+  const OpenAI = require("openai");
+  client = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+}
 
 exports.askLLM = async ({ role, message, context }) => {
+  if (!client) {
+    return "(AI disabled) Please contact hospital staff for assistance.";
+  }
+
   const systemPrompt = `
 You are an AI assistant for a hospital system.
-
-Rules:
-- You DO NOT diagnose diseases.
-- You provide educational and operational assistance only.
-- You are role-aware: ${role}.
-- You answer ONLY using provided context.
-- If unsure, say you are not confident.
-
+Role: ${role}
 Context:
 ${context}
 `;
@@ -29,13 +33,4 @@ ${context}
   });
 
   return response.choices[0].message.content;
-
-  return {
-    role: "PATIENT",
-    intent: "SYMPTOM_CHECK",
-    departmentHint: "Cardiology",
-    requiresConfirmation: true,
-    message:
-      "Based on your symptoms, Cardiology may be suitable. Would you like me to check available doctors and book the earliest appointment?",
-  };
 };

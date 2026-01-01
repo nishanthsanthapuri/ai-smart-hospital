@@ -1,0 +1,572 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #2563eb; /* Blue */
+  --secondary: #16a34a; /* Green */
+  --accent: #f97316; /* Orange */
+  --danger: #dc2626; /* Red */
+
+  --bg-main: #f8fafc; /* Light hospital background */
+  --bg-card: #ffffff;
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+
+  --border: #e5e7eb;
+  --radius: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(
+      rgba(248, 250, 252, 0.95),
+      rgba(248, 250, 252, 0.95)
+    ),
+    url("/hospital-bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text-main);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background: var(--primary);
+  color: white;
+}
+
+th,
+td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:hover {
+  background: #f1f5f9;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+.card,
+section,
+main > div {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+}
+input,
+select,
+textarea {
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+.status-success {
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.status-warning {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.status-danger {
+  color: var(--danger);
+  font-weight: 600;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #60a5fa; /* Soft blue */
+    --secondary: #4ade80; /* Green */
+    --accent: #fb923c; /* Orange */
+    --danger: #f87171; /* Red */
+
+    --bg-main: #020617;
+    --bg-card: #0f172a;
+
+    --text-main: #e5e7eb;
+    --text-muted: #94a3b8;
+
+    --border: #1e293b;
+  }
+}
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)),
+    url("/hospital-bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--text-main);
+}
+@media (prefers-color-scheme: dark) {
+  table {
+    background: var(--bg-card);
+  }
+
+  thead {
+    background: #1e40af;
+  }
+
+  tbody tr:hover {
+    background: #020617;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .card,
+  section,
+  main > div {
+    background: var(--bg-card);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  button {
+    background: var(--primary);
+    color: #020617;
+  }
+
+  button:hover {
+    background: #3b82f6;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  input,
+  select,
+  textarea {
+    background: #020617;
+    color: var(--text-main);
+    border-color: var(--border);
+  }
+}
+:root {
+  --chart-blue: #2563eb;
+  --chart-green: #16a34a;
+  --chart-orange: #f97316;
+  --chart-red: #dc2626;
+  --chart-purple: #7c3aed;
+
+  --chart-grid: #e5e7eb;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --chart-grid: #1e293b;
+  }
+}
+svg {
+  overflow: visible;
+}
+
+.recharts-cartesian-grid line,
+.recharts-cartesian-axis line {
+  stroke: var(--chart-grid);
+}
+
+.recharts-cartesian-axis-tick text {
+  fill: var(--text-muted);
+  font-size: 12px;
+}
+.recharts-bar-rectangle path {
+  fill: var(--chart-blue);
+}
+
+.recharts-line path {
+  stroke-width: 3;
+}
+
+.recharts-area-area {
+  fill-opacity: 0.25;
+}
+.recharts-tooltip-wrapper {
+  background: var(--bg-card);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.recharts-default-tooltip {
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-main);
+}
+.recharts-legend-item text {
+  fill: var(--text-main);
+  font-size: 13px;
+}
+@media (prefers-color-scheme: dark) {
+  .recharts-cartesian-grid line {
+    stroke-opacity: 0.4;
+  }
+
+  .recharts-tooltip-wrapper {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  }
+}
+/* AI chat main container */
+.ai-chat,
+.bg-white.rounded-xl.shadow {
+  border-radius: 14px;
+  background: var(--bg-card);
+}
+/* Common message bubble */
+.ai-message,
+.user-message,
+.text-left span,
+.text-right span {
+  max-width: 75%;
+  line-height: 1.5;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+/* User bubble */
+.text-right span {
+  background: linear-gradient(135deg, var(--primary), #1d4ed8);
+  color: white;
+  border-radius: 16px 16px 4px 16px;
+}
+/* AI bubble */
+.text-left span {
+  background: #f1f5f9;
+  color: var(--text-main);
+  border-radius: 16px 16px 16px 4px;
+}
+@media (prefers-color-scheme: dark) {
+  .text-left span {
+    background: #020617;
+    color: var(--text-main);
+  }
+}
+/* Message area */
+.h-64.overflow-y-auto {
+  scrollbar-width: thin;
+  padding: 8px;
+  background: transparent;
+}
+/* AI input row */
+.ai-input,
+.flex.gap-2 {
+  align-items: center;
+}
+
+/* Send button emphasis */
+.flex.gap-2 button {
+  min-width: 90px;
+}
+/* AI thinking text */
+.text-gray-500 {
+  font-style: italic;
+  opacity: 0.8;
+}
+@media (prefers-color-scheme: dark) {
+  .text-right span {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    color: #020617;
+  }
+}
+/* Dashboard KPI cards */
+.card,
+section > div,
+main > div > div {
+  background: linear-gradient(180deg, var(--bg-card), #f8fafc);
+  border-radius: 16px;
+  padding: 18px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover,
+section > div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+}
+/* Big numbers in dashboards */
+h1,
+h2 {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+/* KPI labels / subtitles */
+.text-sm,
+.text-muted {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+/* Accent strip for cards */
+.card::before,
+section > div::before {
+  content: "";
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 16px 16px 0 0;
+  margin-bottom: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  .card,
+  section > div,
+  main > div > div {
+    background: linear-gradient(180deg, var(--bg-card), #020617);
+  }
+
+  .card:hover,
+  section > div:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .card,
+  section > div,
+  main > div > div {
+    background: linear-gradient(180deg, var(--bg-card), #020617);
+  }
+
+  .card:hover,
+  section > div:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+  }
+}
+aside {
+  width: 240px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1e293b, #020617);
+  color: #e5e7eb;
+  padding: 16px 12px;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+}
+aside ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+aside a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  color: #e5e7eb;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+aside a:hover {
+  background: rgba(59, 130, 246, 0.15);
+  transform: translateX(4px);
+}
+aside a.active {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: white;
+  font-weight: 600;
+}
+aside a svg {
+  width: 18px;
+  height: 18px;
+  opacity: 0.85;
+}
+aside h3,
+aside .section-title {
+  margin: 16px 12px 8px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+@media (max-width: 768px) {
+  aside {
+    width: 200px;
+  }
+}
+@media (max-width: 768px) {
+  aside {
+    width: 200px;
+  }
+}
+aside a svg {
+  stroke: #cbd5f5;
+}
+aside a i {
+  color: #cbd5f5;
+}
+aside a img {
+  filter: brightness(0.9);
+}
+aside a:hover svg,
+aside a:hover i {
+  opacity: 1;
+  transform: scale(1.08);
+  stroke: #60a5fa;
+  color: #60a5fa;
+}
+
+aside a:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+aside a.active svg {
+  stroke: white;
+}
+
+aside a.active i {
+  color: white;
+}
+
+aside a.active img {
+  filter: brightness(1.2);
+}
+aside a span.badge {
+  margin-left: auto;
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+@media (prefers-color-scheme: dark) {
+  aside a svg {
+    stroke: #e5e7eb;
+  }
+
+  aside a i {
+    color: #e5e7eb;
+  }
+}
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(
+      rgba(248, 250, 252, 0.96),
+      rgba(248, 250, 252, 0.96)
+    ),
+    url("/images/hospital-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-main);
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(37, 99, 235, 0.03) 0,
+    rgba(37, 99, 235, 0.03) 1px,
+    transparent 1px,
+    transparent 60px
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+main {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.85),
+    rgba(248, 250, 252, 0.85)
+  );
+}
+.card::after,
+section > div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, transparent 75%, rgba(37, 99, 235, 0.06));
+  pointer-events: none;
+}
+thead {
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(rgba(2, 6, 23, 0.9), rgba(2, 6, 23, 0.9)),
+      url("/images/hospital-bg-dark.jpg");
+  }
+}
+aside::before {
+  content: "";
+  display: block;
+  height: 64px;
+  margin-bottom: 20px;
+  background: url("/branding/hospital-logo.png") no-repeat center;
+  background-size: contain;
+}
+main::after {
+  content: "AI Smart Hospital";
+  position: fixed;
+  bottom: 16px;
+  right: 24px;
+  font-size: 11px;
+  color: rgba(100, 116, 139, 0.25);
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+@media (prefers-color-scheme: dark) {
+  main::after {
+    color: rgba(148, 163, 184, 0.25);
+  }
+}

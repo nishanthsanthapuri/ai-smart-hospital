@@ -1,0 +1,27 @@
+services:
+  mongo:
+    image: mongo:6
+    container_name: hospital-mongo
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./server
+    container_name: hospital-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./server/.env.production
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./client
+    container_name: hospital-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

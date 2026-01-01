@@ -248,13 +248,13 @@ Auto redeploy on GitHub push
 🔐 Environment Variables
 Backend
 PORT=5000
-MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/db
+mongodb+srv://hospitaluser:hospital123@ai-hospital.oo55xkt.mongodb.net/?appName=ai_hospital
 JWT_SECRET=super_secret_key
 ENABLE_AI=false
 OPENAI_API_KEY=optional
 
 Frontend
-VITE_API_URL=https://your-backend.onrender.com
+VITE_API_URL=https://ai-smart-hospital1.onrender.com/health
 
 🧪 CI/CD
 
@@ -297,6 +297,8 @@ Multi-hospital tenancy
 Audit logs
 
 Observability (Prometheus)
+
+https://ai-smart-hospitals.netlify.app/
 
 👨‍💻 Author
 
